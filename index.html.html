@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="那年春天的相遇 - 一個校園戀愛互動故事，透過你的選擇決定故事走向與結局。">
+  <title>那年春天的相遇 | 互動戀愛故事</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <canvas id="bgCanvas"></canvas>
+
+  <div class="container">
+    <!-- Title Screen -->
+    <div id="titleScreen" class="screen active">
+      <div class="card title-card">
+        <div class="title-deco">❀</div>
+        <h1>那年春天的相遇</h1>
+        <p class="subtitle">一段從雨天開始的校園故事</p>
+        <div class="divider"></div>
+        <p class="intro-text">
+          大學二年級的春天，一場突如其來的雨，<br>
+          讓你遇見了一個改變你生活的人。<br>
+          每一個選擇，都將帶你走向不同的未來⋯⋯
+        </p>
+        <button id="startBtn" class="btn btn-primary" onclick="startStory()">
+          <span>開始故事</span>
+          <span class="btn-arrow">→</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Story Screen -->
+    <div id="storyScreen" class="screen">
+      <div class="card story-card">
+        <div class="progress-bar">
+          <div id="progressFill" class="progress-fill"></div>
+        </div>
+        <div id="storyContent" class="story-content">
+          <p id="storyText" class="story-text"></p>
+        </div>
+        <div class="divider"></div>
+        <div id="choicesContainer" class="choices-container"></div>
+      </div>
+    </div>
+
+    <!-- Ending Screen -->
+    <div id="endingScreen" class="screen">
+      <div class="card ending-card">
+        <div class="ending-icon" id="endingIcon">✿</div>
+        <div class="ending-label">— 結局 —</div>
+        <h2 id="endingTitle" class="ending-title"></h2>
+        <div class="divider"></div>
+        <p id="endingText" class="ending-text"></p>
+        <div class="ending-actions">
+          <button class="btn btn-primary" onclick="restartStory()">
+            <span>重新開始故事</span>
+            <span class="btn-arrow">↺</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

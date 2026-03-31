@@ -1,0 +1,425 @@
+/* ===== CSS Variables & Reset ===== */
+:root {
+  --pink-50: #fdf2f8;
+  --pink-100: #fce7f3;
+  --pink-200: #fbcfe8;
+  --pink-300: #f9a8d4;
+  --pink-400: #f472b6;
+  --pink-500: #ec4899;
+  --purple-50: #faf5ff;
+  --purple-100: #f3e8ff;
+  --purple-200: #e9d5ff;
+  --purple-300: #d8b4fe;
+  --purple-400: #c084fc;
+  --purple-500: #a855f7;
+  --bg-gradient: linear-gradient(135deg, #fdf2f8 0%, #f3e8ff 50%, #ede9fe 100%);
+  --card-bg: rgba(255, 255, 255, 0.82);
+  --card-border: rgba(244, 114, 182, 0.18);
+  --card-shadow: 0 8px 32px rgba(168, 85, 247, 0.08), 0 2px 8px rgba(236, 72, 153, 0.06);
+  --text-primary: #3b1f4a;
+  --text-secondary: #6b4f7a;
+  --text-light: #9780a9;
+  --btn-gradient: linear-gradient(135deg, #f472b6 0%, #c084fc 100%);
+  --btn-hover: linear-gradient(135deg, #ec4899 0%, #a855f7 100%);
+  --transition-smooth: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  --font-main: 'Segoe UI', 'PingFang TC', 'Microsoft JhengHei', 'Noto Sans TC', sans-serif;
+}
+
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-main);
+  background: var(--bg-gradient);
+  color: var(--text-primary);
+  min-height: 100vh;
+  min-height: 100dvh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow-x: hidden;
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ===== Canvas Background ===== */
+#bgCanvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  pointer-events: none;
+}
+
+/* ===== Container ===== */
+.container {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-width: 520px;
+  padding: 1rem;
+  min-height: 100dvh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ===== Screens ===== */
+.screen {
+  display: none;
+  width: 100%;
+  animation: fadeSlideIn 0.6s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+.screen.active {
+  display: block;
+}
+
+@keyframes fadeSlideIn {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ===== Card ===== */
+.card {
+  background: var(--card-bg);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid var(--card-border);
+  border-radius: 20px;
+  padding: 2.5rem 2rem;
+  box-shadow: var(--card-shadow);
+  position: relative;
+  overflow: hidden;
+}
+
+.card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: var(--btn-gradient);
+  border-radius: 20px 20px 0 0;
+}
+
+/* ===== Title Screen ===== */
+.title-deco {
+  font-size: 2.5rem;
+  text-align: center;
+  margin-bottom: 0.5rem;
+  animation: floatSoft 3s ease-in-out infinite;
+}
+
+@keyframes floatSoft {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-6px); }
+}
+
+h1 {
+  font-size: 1.85rem;
+  text-align: center;
+  background: linear-gradient(135deg, var(--pink-500), var(--purple-500));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  line-height: 1.3;
+}
+
+.subtitle {
+  text-align: center;
+  color: var(--text-light);
+  font-size: 0.95rem;
+  margin-top: 0.4rem;
+  letter-spacing: 0.08em;
+}
+
+.divider {
+  width: 48px;
+  height: 2px;
+  background: var(--btn-gradient);
+  margin: 1.2rem auto;
+  border-radius: 2px;
+}
+
+.intro-text {
+  text-align: center;
+  color: var(--text-secondary);
+  font-size: 0.92rem;
+  line-height: 1.9;
+  margin-bottom: 0.5rem;
+}
+
+/* ===== Buttons ===== */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.85rem 2rem;
+  border: none;
+  border-radius: 50px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--transition-smooth);
+  font-family: var(--font-main);
+  letter-spacing: 0.03em;
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-primary {
+  background: var(--btn-gradient);
+  color: #fff;
+  box-shadow: 0 4px 16px rgba(236, 72, 153, 0.25);
+}
+
+.btn-primary:hover {
+  background: var(--btn-hover);
+  box-shadow: 0 6px 24px rgba(168, 85, 247, 0.3);
+  transform: translateY(-2px);
+}
+
+.btn-primary:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 8px rgba(236, 72, 153, 0.2);
+}
+
+.btn-arrow {
+  font-size: 1.15rem;
+  transition: transform 0.3s ease;
+}
+
+.btn:hover .btn-arrow {
+  transform: translateX(3px);
+}
+
+#startBtn {
+  display: flex;
+  margin: 1.5rem auto 0;
+}
+
+/* ===== Story Screen ===== */
+.progress-bar {
+  width: 100%;
+  height: 4px;
+  background: var(--pink-100);
+  border-radius: 4px;
+  margin-bottom: 1.5rem;
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  background: var(--btn-gradient);
+  border-radius: 4px;
+  width: 0%;
+  transition: width 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.story-content {
+  min-height: 140px;
+  display: flex;
+  align-items: center;
+}
+
+.story-text {
+  color: var(--text-primary);
+  font-size: 1rem;
+  line-height: 2;
+  white-space: pre-line;
+  animation: textFadeIn 0.5s ease forwards;
+}
+
+@keyframes textFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ===== Choice Buttons ===== */
+.choices-container {
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+}
+
+.choice-btn {
+  display: block;
+  width: 100%;
+  padding: 0.9rem 1.2rem;
+  background: rgba(255, 255, 255, 0.7);
+  border: 1.5px solid var(--pink-200);
+  border-radius: 14px;
+  font-size: 0.95rem;
+  color: var(--text-primary);
+  cursor: pointer;
+  transition: var(--transition-smooth);
+  font-family: var(--font-main);
+  text-align: left;
+  line-height: 1.6;
+  position: relative;
+  overflow: hidden;
+  animation: choiceSlideIn 0.4s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+  opacity: 0;
+}
+
+.choice-btn:nth-child(1) { animation-delay: 0.1s; }
+.choice-btn:nth-child(2) { animation-delay: 0.2s; }
+.choice-btn:nth-child(3) { animation-delay: 0.3s; }
+
+@keyframes choiceSlideIn {
+  from {
+    opacity: 0;
+    transform: translateX(-12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.choice-btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 3px;
+  height: 100%;
+  background: var(--btn-gradient);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.choice-btn:hover {
+  background: var(--pink-50);
+  border-color: var(--pink-300);
+  transform: translateX(4px);
+  box-shadow: 0 4px 12px rgba(244, 114, 182, 0.12);
+}
+
+.choice-btn:hover::before {
+  opacity: 1;
+}
+
+.choice-btn:active {
+  transform: translateX(2px);
+}
+
+/* ===== Ending Screen ===== */
+.ending-card {
+  text-align: center;
+}
+
+.ending-icon {
+  font-size: 3rem;
+  margin-bottom: 0.5rem;
+  animation: floatSoft 3s ease-in-out infinite;
+}
+
+.ending-label {
+  font-size: 0.85rem;
+  color: var(--text-light);
+  letter-spacing: 0.2em;
+  margin-bottom: 0.5rem;
+}
+
+.ending-title {
+  font-size: 1.5rem;
+  background: linear-gradient(135deg, var(--pink-500), var(--purple-500));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+}
+
+.ending-text {
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+  line-height: 2;
+  white-space: pre-line;
+  margin-bottom: 1rem;
+}
+
+.ending-actions {
+  margin-top: 0.5rem;
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 480px) {
+  .card {
+    padding: 2rem 1.2rem;
+    border-radius: 16px;
+  }
+
+  h1 {
+    font-size: 1.55rem;
+  }
+
+  .story-text {
+    font-size: 0.95rem;
+  }
+
+  .container {
+    padding: 0.5rem;
+  }
+}
+
+@media (max-width: 360px) {
+  h1 {
+    font-size: 1.35rem;
+  }
+
+  .card {
+    padding: 1.5rem 1rem;
+  }
+
+  .intro-text {
+    font-size: 0.85rem;
+  }
+}
+
+/* ===== Utility ===== */
+::selection {
+  background: var(--pink-200);
+  color: var(--text-primary);
+}
+
+::-webkit-scrollbar {
+  width: 4px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--pink-200);
+  border-radius: 4px;
+}
