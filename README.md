@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="神秘運勢占卜 — 探索你的命運，揭開工作、學業、愛情、金錢的奧秘">
+  <title>✨ 星辰占卜館 — 探索你的命運</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;700;900&family=Noto+Sans+TC:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <canvas id="starfield"></canvas>
+
+  <div class="app-container">
+    <!-- 首頁區塊 -->
+    <section id="home-section" class="section visible">
+      <div class="crystal-orb" id="crystal-orb">
+        <canvas id="orb-canvas" width="200" height="200"></canvas>
+      </div>
+      <h1 class="main-title">✨ 星辰占卜館 ✨</h1>
+      <p class="subtitle">命運的絲線交織於星辰之間<br>讓神秘的力量為你揭曉今日運勢</p>
+      <div class="divider">─── ☽ ◯ ☾ ───</div>
+      <p class="instruction">集中精神，在心中默想你的問題<br>然後點擊下方水晶球開始占卜</p>
+      <button id="start-btn" class="btn btn-primary">
+        <span class="btn-icon">🔮</span>
+        <span>開始占卜</span>
+      </button>
+    </section>
+
+    <!-- 占卜動畫區塊 -->
+    <section id="divining-section" class="section">
+      <div class="divining-animation">
+        <div class="magic-circle">
+          <div class="ring ring-outer"></div>
+          <div class="ring ring-middle"></div>
+          <div class="ring ring-inner"></div>
+          <div class="magic-symbol">✦</div>
+        </div>
+        <p class="divining-text">星辰正在排列中...</p>
+        <div class="loading-dots">
+          <span>.</span><span>.</span><span>.</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- 結果區塊 -->
+    <section id="result-section" class="section">
+      <div class="result-card" id="result-card">
+        <div class="result-header">
+          <span class="result-emoji" id="result-emoji"></span>
+          <h2 class="result-title" id="result-title"></h2>
+          <div class="result-stars" id="result-stars"></div>
+        </div>
+        <div class="result-body">
+          <p class="result-summary" id="result-summary"></p>
+          <div class="result-details">
+            <div class="detail-item" id="detail-work">
+              <span class="detail-icon">💼</span>
+              <div class="detail-content">
+                <h3>工作事業</h3>
+                <p id="detail-work-text"></p>
+                <div class="detail-bar"><div class="detail-bar-fill" id="bar-work"></div></div>
+              </div>
+            </div>
+            <div class="detail-item" id="detail-study">
+              <span class="detail-icon">📚</span>
+              <div class="detail-content">
+                <h3>學業考試</h3>
+                <p id="detail-study-text"></p>
+                <div class="detail-bar"><div class="detail-bar-fill" id="bar-study"></div></div>
+              </div>
+            </div>
+            <div class="detail-item" id="detail-love">
+              <span class="detail-icon">💕</span>
+              <div class="detail-content">
+                <h3>戀愛情感</h3>
+                <p id="detail-love-text"></p>
+                <div class="detail-bar"><div class="detail-bar-fill" id="bar-love"></div></div>
+              </div>
+            </div>
+            <div class="detail-item" id="detail-money">
+              <span class="detail-icon">💰</span>
+              <div class="detail-content">
+                <h3>財運金錢</h3>
+                <p id="detail-money-text"></p>
+                <div class="detail-bar"><div class="detail-bar-fill" id="bar-money"></div></div>
+              </div>
+            </div>
+          </div>
+          <div class="result-quote" id="result-quote"></div>
+        </div>
+      </div>
+      <button id="retry-btn" class="btn btn-secondary">
+        <span class="btn-icon">🔄</span>
+        <span>再占卜一次</span>
+      </button>
+    </section>
+  </div>
+
+  <footer class="footer">
+    <p>✨ 星辰占卜館 — 僅供娛樂，命運掌握在自己手中 ✨</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
